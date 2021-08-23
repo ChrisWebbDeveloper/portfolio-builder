@@ -126,14 +126,14 @@ For all of this, it is best to play around and see what you can do and what you 
 * [Docker](https://www.docker.com/)
 
 Demo Photos from Unsplash
+* [Photo by Alexander Andrews](https://unsplash.com/photos/Y4rY3_BM5Io)
+* [Photo by Aranprime](https://unsplash.com/photos/hwzLBk3079Q)
+* [Photo by Carlos Lindner](https://unsplash.com/photos/qjqcKJXO5hs)
 * [Photo by William Moreland](https://unsplash.com/photos/G0Ot7IsL-_I)
+* [Photo by Alberto Restifo](https://unsplash.com/photos/HYA9Ak06qR8)
 * [Photo by Logan Weaver](https://unsplash.com/photos/h_abdKXlMFM)
 * [Photo by Jay Wennington](https://unsplash.com/photos/sl1-IazYY7I)
-* [Photo by Alberto Restifo](https://unsplash.com/photos/HYA9Ak06qR8)
-* [Photo by Aranprime](https://unsplash.com/photos/hwzLBk3079Q)
 * [Photo by Bailey Zindel](https://unsplash.com/photos/NRQV-hBF10M)
-* [Photo by Carlos Lindner](https://unsplash.com/photos/qjqcKJXO5hs)
-* [Photo by Alexander Andrews](https://unsplash.com/photos/Y4rY3_BM5Io)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
