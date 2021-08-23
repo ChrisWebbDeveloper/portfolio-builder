@@ -1,0 +1,48 @@
+﻿@model PortfolioBuilder.ViewModels.UserViewModel
+
+@{
+    ViewData["Title"] = Model.Email + " - Edit";
+}
+
+<div class="page-container">
+    <partial name="_NavigationPartial" />
+
+    <h1>@ViewData["Title"]</h1>
+
+    <form asp-action="Edit" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="RoleNames"></label>
+            <br />
+
+
+            @foreach (var role in ViewBag.AllRoles)
+            {
+                @if (User.IsInRole(role.Name) || User.IsInRole("Superuser"))
+                {
+                    var roleNames = Model.RoleNames.ToList();
+
+                    <input type="checkbox"
+                           name="roleNames"
+                           value="@role.Name"
+                           @(Html.Raw(roleNames.Count > 0 && roleNames.Contains(role.Name) ? "checked=\"checked\"" : "")) />
+                    @role.Name
+                    <br />
+                }
+            }
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Edit User</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,124 @@
+﻿@model PortfolioBuilder.Models.Contact
+
+@{
+    ViewData["Title"] = "Edit - Contact";
+}
+
+<div class="page-container">
+    <partial name="_NavigationPartial" />
+
+    <h1>Contact</h1>
+    <br />
+
+    <div class="row">
+        <div class="col-12">
+            <form asp-action="Edit">
+                <input type="hidden" asp-for="Id" />
+
+                <div class="row">
+                    <div asp-validation-summary="ModelOnly" class="col-12 text-danger"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 form-group">
+                        <textarea asp-for="Message" class="form-control" placeholder="Message to display"></textarea>
+                        <span asp-validation-for="Message" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-md-6 form-group">
+                        <div class="row">
+                            <div class="col-2 text-center">
+                                <i class="fas fa-user fa-2x"></i>
+                            </div>
+                            <div class="col-10">
+                                <input asp-for="Name" class="form-control" placeholder="Name" />
+                            </div>
+                        </div>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="col-12 col-md-6 form-group">
+                        <div class="row">
+                            <div class="col-2 text-center">
+                                <i class="fas fa-map-marker-alt fa-2x"></i>
+                            </div>
+                            <div class="col-10">
+                                <input asp-for="Location" class="form-control" placeholder="Location" />
+                            </div>
+                            <span asp-validation-for="Location" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group">
+                        <div class="row">
+                            <div class="col-2 text-center">
+                                <i class="fas fa-mobile-alt fa-2x"></i>
+                            </div>
+                            <div class="col-10">
+                                <input asp-for="PhoneNo" class="form-control" placeholder="Phone Number" />
+                            </div>
+                            <span asp-validation-for="PhoneNo" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group">
+                        <div class="row">
+                            <div class="col-2 text-center">
+                                <i class="fas fa-envelope fa-2x"></i>
+                            </div>
+                            <div class="col-10">
+                                <input asp-for="Email" class="form-control" placeholder="Email" />
+                            </div>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-md-6 form-group">
+                        <div class="row">
+                            <div class="col-2 text-center">
+                                <i class="fab fa-facebook-f fa-2x"></i>
+                            </div>
+                            <div class="col-10">
+                                <input asp-for="Facebook" class="form-control" placeholder="Facebook" />
+                                <span asp-validation-for="Facebook" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group">
+                        <div class="row">
+                            <div class="col-2 text-center">
+                                <i class="fab fa-instagram fa-2x"></i>
+                            </div>
+                            <div class="col-10">
+                                <input asp-for="Instagram" class="form-control" placeholder="Instagram" />
+                                <span asp-validation-for="Instagram" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 form-group">
+                        <div class="row">
+                            <div class="col-2 text-center">
+                                <i class="fab fa-linkedin-in fa-2x"></i>
+                            </div>
+                            <div class="col-10">
+                                <input asp-for="LinkedIn" class="form-control" placeholder="LinkedIn" />
+                                <span asp-validation-for="LinkedIn" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

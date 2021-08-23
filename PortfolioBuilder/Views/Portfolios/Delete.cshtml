@@ -1,0 +1,45 @@
+﻿@model PortfolioBuilder.Models.Portfolio
+
+@{
+    ViewData["Title"] = Model.Name + " - Delete";
+}
+
+<div class="page-container">
+    <partial name="_NavigationPartial" />
+
+    <h1>@ViewData["Title"]</h1>
+
+    <h3>Are you sure you want to delete this? This cannot be undone</h3>
+    <hr />
+
+    <partial name="Item Display/_PortfolioDetailsPartial" model="Model" />
+
+    @if (!String.IsNullOrEmpty(Model.Description))
+    {
+        <div class="row">
+            <div class="col-12">
+                <p class="multiline">@Model.Description</p>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="cat-port-display row">
+    @foreach (var portfolioPhoto in Model.Photos.OrderBy(ph => ph.Position))
+    {
+        string imgWidthClass = !String.IsNullOrEmpty(portfolioPhoto.Width.ToString()) ? "col-md-" + portfolioPhoto.Width.ToString() : "";
+
+        <div class="col-12 @imgWidthClass">
+            <img src="~/images/@portfolioPhoto.Photo.FilePath" alt="@portfolioPhoto.Photo.FilePath" title="@portfolioPhoto.Photo.Name" />
+        </div>
+    }
+</div>
+
+@Html.Raw(Model.CustomHtml)
+
+<div class="page-container">
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger submit-button" />
+    </form>
+</div>

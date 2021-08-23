@@ -1,0 +1,7 @@
+﻿.photo-display-lg {
+    @extend .mx-auto;
+    @extend .mb-4;
+    display: block;
+    max-height: 600px;
+    max-width: 100%;
+}

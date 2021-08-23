@@ -1,0 +1,21 @@
+﻿@model PortfolioBuilder.ViewModels.CategoryPortfolioDataViewModel
+
+@{
+    string portfolioWidthClass = !String.IsNullOrEmpty(Model.Width.ToString()) ? "col-md-" + Model.Width.ToString() : "";
+}
+
+<div class="cat-port-display-box item-display-box item-sorter-box item-resizer-box item-deleter-box col-12 @portfolioWidthClass">
+    <input type="checkbox" class="item-deleter-get item-setter-get-id" value="@Model.PortfolioId" />
+    <div class="item-to-delete item-to-display">
+        @if (Model.FeaturedPhoto != null)
+        {
+            <img src="~/images/@Model.FeaturedPhoto.FilePath" alt="@Model.FeaturedPhoto.FilePath" title="@Model.FeaturedPhoto.Name" />
+        }
+        else
+        {
+            <div class="no-photo"></div>
+        }
+    </div>
+    <h3 class="cat-port-details-overlay">@Model.Name</h3>
+    <partial name="_DragArrowPartial" />
+</div>

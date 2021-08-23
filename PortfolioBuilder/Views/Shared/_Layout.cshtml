@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Portfolio Builder<environment names="Development"> DEV</environment><environment names="Staging"> STAGE</environment></title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/lib/slick-carousel/dist/css/slick.css" />
+    <link rel="stylesheet" type="text/css" href="~/lib/slick-carousel/dist/css/slick-theme.css" />
+
+    <link rel="icon" type="image/x-icon" href="~/images/favicon.ico" />
+
+    <environment names="Development">
+        <link rel="stylesheet" type="text/css" href="~/css/site.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" type="text/css" href="~/css/site.min.css" />
+    </environment>
+
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+
+    <header>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <partial name="Headers/_AdminHeaderPartial" />
+        }
+
+        <partial name="Headers/_HeaderPartial" />
+    </header>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <partial name="Footers/_FooterPartial" />
+
+    <partial name="Item Display/Popup Modal/_AlertModalPartial" />
+    <partial name="Item Display/Popup Modal/_ConfirmModalPartial" />
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/fontawesome-free/dist/all.min.js"></script>
+
+    <environment names="Development">
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

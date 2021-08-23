@@ -1,0 +1,21 @@
+﻿@{
+    string controller = (ViewContext.RouteData.Values["controller"] ?? "").ToString();
+    string action = (ViewContext.RouteData.Values["action"] ?? "").ToString();
+}
+
+@if (controller == "Home" && action == "Index")
+{
+    ViewData["FooterLinkClass"] = "text-light";
+
+    <footer class="home-footer">
+        <partial name="Footers/_FooterContentPartial" view-data="ViewData" />
+    </footer>
+}
+else
+{
+    ViewData["FooterLinkClass"] = "text-muted";
+
+    <footer class="container">
+        <partial name="Footers/_FooterContentPartial" view-data="ViewData" />
+    </footer>
+}

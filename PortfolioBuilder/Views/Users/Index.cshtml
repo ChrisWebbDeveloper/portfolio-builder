@@ -1,0 +1,25 @@
+﻿@model IEnumerable<PortfolioBuilder.ViewModels.UserViewModel>
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+<div class="page-container">
+    <partial name="_NavigationPartial" />
+
+    <h1>@ViewData["Title"]</h1>
+    <br />
+
+    @foreach (var user in Model)
+    {
+        <div class="row">
+            <h3 class="col-12 col-md-8">@user.Email</h3>
+            <div class="col-12 col-md-4 btn-group" role="group">
+                <a class="btn btn-outline-primary" asp-action="Edit" asp-route-Id="@user.Id">Edit</a>
+                <a class="btn btn-outline-danger" asp-action="Delete" asp-route-Id="@user.Id">Delete</a>
+            </div>
+        </div>
+        <br />
+    }
+
+</div>

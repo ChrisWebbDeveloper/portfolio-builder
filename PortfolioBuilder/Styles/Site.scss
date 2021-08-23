@@ -1,0 +1,97 @@
+﻿@import 'Shared/StyleVariables';
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+@import 'Shared/LinkAnimate';
+
+@import 'About/All';
+@import 'About/Index';
+
+@import 'Categories Portfolios/All';
+
+@import 'Contact/Index';
+
+@import 'Home/Index';
+
+@import 'Photos/All';
+@import 'Photos/Index';
+
+@import 'Shared/Config Boxes/ConfigCarousel';
+@import 'Shared/Config Boxes/ItemDisplayBox';
+
+@import 'Shared/Footers/Footer';
+
+@import 'Shared/Headers/AdminHeader';
+@import 'Shared/Headers/Header';
+@import 'Shared/Headers/Login';
+
+@import 'Shared/Item Display/CatPortDisplay';
+@import 'Shared/Item Display/FeaturedPhotoDisplay';
+@import 'Shared/Item Display/PhotoModal';
+@import 'Shared/Item Display/PopupModal';
+
+@import 'Shared/ConfigBox';
+@import 'Shared/ItemResizer';
+@import 'Shared/ItemSetter';
+@import 'Shared/ItemsToDisplay';
+@import 'Shared/ItemToDelete';
+@import 'Shared/Navigation';
+@import 'Shared/OptionsBox';
+@import 'Shared/PhotoUploader';
+@import 'Shared/SocialMedia';
+
+body {
+    font-family: $siteFont;
+}
+
+//Page container with padding
+.page-container {
+    @extend .container;
+    @extend .py-3;
+}
+
+//For descriptions that are saved with multiple lines i.e. textareas
+.multiline {
+    white-space: pre-line;
+    word-break: break-word;
+}
+
+.btn {
+    border-width: 2px !important;
+
+    &.btn-outline-primary,
+    &.btn-outline-secondary,
+    &.btn-outline-success,
+    &.btn-outline-danger,
+    &.btn-outline-warning,
+    &.btn-outline-info,
+    &.btn-outline-light,
+    &.btn-outline-dark {
+        box-shadow: none !important;
+    }
+
+    &.btn-outline-primary,
+    &.btn-outline-secondary,
+    &.btn-outline-success,
+    &.btn-outline-danger,
+    &.btn-outline-warning,
+    &.btn-outline-info,
+    &.btn-outline-dark {
+        &:not(:hover) {
+            background-color: white;
+        }
+    }
+}
+
+.form-control-h1 {
+    @extend .form-control;
+    font-size: 2.5rem;
+}
+
+.input-border {
+    border: $inputBorder;
+}
+
+.modal-toggler {
+    cursor: pointer;
+}

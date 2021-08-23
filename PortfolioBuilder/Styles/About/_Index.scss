@@ -1,0 +1,24 @@
+﻿#about-text {
+    @extend .pb-md-5;
+}
+
+#about-imgs {
+    //allow scrolling
+    overflow: auto;
+    overflow-y: scroll;
+
+    //Hide Scrollbar
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.about-img {
+    @extend .mx-auto;
+    @extend .img-fluid;
+    @extend .mb-3;
+    display:block;
+    width: 100%;
+}

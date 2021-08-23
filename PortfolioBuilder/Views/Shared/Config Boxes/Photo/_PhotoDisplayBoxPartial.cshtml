@@ -1,0 +1,13 @@
+﻿@model PortfolioBuilder.ViewModels.PhotoDataViewModel
+
+@{
+    string photoWidthClass = !String.IsNullOrEmpty(Model.Width.ToString()) ? "col-md-" + Model.Width.ToString() : "";
+}
+
+<div class="item-display-box item-sorter-box item-resizer-box item-deleter-box col-12 @photoWidthClass">
+    <input type="checkbox" class="item-deleter-get item-setter-get-id" value="@Model.PhotoId" />
+    <div class="item-to-delete">
+        <img src="~/images/@Model.FilePath" alt="@Model.FilePath" title="@Model.Name" class="item-to-display" />
+    </div>
+    <partial name="_DragArrowPartial" />
+</div>

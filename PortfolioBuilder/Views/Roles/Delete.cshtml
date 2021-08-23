@@ -1,0 +1,21 @@
+﻿@model PortfolioBuilder.ViewModels.RoleViewModel
+
+@{
+    ViewData["Title"] = Model.RoleName + " - Delete";
+}
+
+<div class="page-container">
+    <partial name="_NavigationPartial" />
+
+    <h1>@ViewData["Title"]</h1>
+    <br />
+
+    <h3>Are you sure you want to delete this? This cannot be undone</h3>
+
+    <br />
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="RoleName" />
+        <input type="submit" value="Delete" class="btn btn-danger submit-button" />
+    </form>
+</div>

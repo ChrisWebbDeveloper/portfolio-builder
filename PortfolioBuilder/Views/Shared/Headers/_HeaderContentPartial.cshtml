@@ -1,0 +1,54 @@
+﻿<a class="navbar-brand" asp-controller="Home" asp-action="Index">
+    Portfolio Builder
+</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar-collapse" aria-controls="main-navbar-collapse" aria-expanded="false" aria-label="Toggle Main Navbar">
+    <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="main-navbar-collapse">
+    <ul class="navbar-nav ml-auto">
+        @{
+            var categoriesAvailable = ViewData.ContainsKey("HeaderCategories") ? (ViewData["HeaderCategories"] as List<Category>).Count > 0 : false;
+
+            if (categoriesAvailable || User.Identity.IsAuthenticated)
+            {
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle @ViewData["NavLinkClass"]" id="portfolios-navbar-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Portfolios
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="portfolios-navbar-dropdown">
+                        <a class="dropdown-item" asp-controller="Portfolios" asp-action="Index">All</a>
+                        <a class="dropdown-item" asp-controller="Categories" asp-action="Index">Categories</a>
+                        @if (categoriesAvailable)
+                        {
+                            <div class="dropdown-divider"></div>
+                            foreach (var category in ViewData["HeaderCategories"] as IEnumerable<Category>)
+                            {
+                                <a class="dropdown-item" asp-controller="Categories" asp-action="Details" asp-route-name="@category.Name">@category.Name</a>
+                            }
+                        }
+                    </div>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link @ViewData["NavLinkClass"]" asp-controller="Portfolios" asp-action="Index">Portfolios</a>
+                </li>
+            }
+        }
+
+        <li class="nav-item">
+            <a class="nav-link @ViewData["NavLinkClass"]" asp-controller="About" asp-action="Index">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @ViewData["NavLinkClass"]" asp-controller="Contact" asp-action="Index">Contact</a>
+        </li>
+
+        @if (ViewData["Facebook"] != null || ViewData["Instagram"] != null || ViewData["LinkedIn"] != null)
+        {
+            <li class="nav-item">
+                <partial name="_SocialMediaPartial" />
+            </li>
+        }
+    </ul>
+</div>

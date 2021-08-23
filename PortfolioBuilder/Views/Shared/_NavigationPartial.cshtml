@@ -1,0 +1,214 @@
+﻿@{
+    object areaObj = ViewContext.RouteData.Values["area"];
+    string area = (areaObj != null) ? areaObj.ToString() : null;
+
+    object controllerObj = ViewContext.RouteData.Values["controller"];
+    string controller = (controllerObj != null) ? controllerObj.ToString() : null;
+
+    object actionObj = ViewContext.RouteData.Values["action"];
+    string action = (actionObj != null) ? actionObj.ToString() : null;
+}
+
+<div class="navigation-box">
+    <div class="btn-group" role="group">
+        @{
+            //Home, About, Contact
+            if (controller == "Home" || controller == "About" || controller == "Contact")
+            {
+                if (action != "Index")
+                {
+                    <a asp-action="Index" class="btn btn-outline-primary"><i class="fas fa-chevron-left"></i> Back</a>
+                }
+
+                if (User.Identity.IsAuthenticated)
+                {
+                    if (action != "Edit")
+                    {
+                        <a asp-action="Edit" class="btn btn-outline-primary">Edit</a>
+                    }
+                }
+            }
+
+            //Photos
+            if (controller == "Photos")
+            {
+                if (action != "Index")
+                {
+                    <a asp-action="Index" class="btn btn-outline-primary"><i class="fas fa-chevron-left"></i> Back to Photos</a>
+                }
+
+                if (action != "Create")
+                {
+                    if (action != "Details")
+                    {
+                        <a asp-action="Details" asp-route-Id="@Model.Id" class="btn btn-outline-primary">Details</a>
+                    }
+
+                    if (action != "Edit")
+                    {
+                        <a asp-action="Edit" asp-route-Id="@Model.Id" class="btn btn-outline-primary">Edit</a>
+                    }
+
+                    if (action != "Delete")
+                    {
+                        <a asp-action="Delete" asp-route-Id="@Model.Id" class="btn btn-outline-danger">Delete</a>
+                    }
+                }
+            }
+
+            //Portfolios
+            if (controller == "Portfolios")
+            {
+                if (action != "Index")
+                {
+                    <a asp-action="Index" class="btn btn-outline-primary"><i class="fas fa-chevron-left"></i> Back to Portfolios</a>
+                }
+
+                if (action == "Index" || action == "IndexEdit")
+                {
+                    <a asp-action="Create" class="btn btn-outline-primary">Add New Portfolio</a>
+
+                    if (action != "IndexEdit")
+                    {
+                        <a asp-action="IndexEdit" class="btn btn-outline-primary">Edit All</a>
+                    }
+                }
+                else
+                {
+                    if (action != "Create")
+                    {
+                        if (action != "Details")
+                        {
+                            <a asp-action="Details" asp-route-Name="@Model.Name" class="btn btn-outline-primary">Details</a>
+                        }
+
+                        if (action != "Edit")
+                        {
+                            <a asp-action="Edit" asp-route-Name="@Model.Name" class="btn btn-outline-primary">Edit</a>
+                        }
+
+                        if (action != "Delete")
+                        {
+                            <a asp-action="Delete" asp-route-Name="@Model.Name" class="btn btn-outline-danger">Delete</a>
+                        }
+                    }
+                }
+            }
+
+            //Categories
+            if (controller == "Categories")
+            {
+                if (action != "Index")
+                {
+                    <a asp-action="Index" class="btn btn-outline-primary"><i class="fas fa-chevron-left"></i> Back to Categories</a>
+                }
+
+                if (action == "Index" || action == "IndexEdit")
+                {
+                    <a asp-action="Create" class="btn btn-outline-primary">Add New Category</a>
+
+                    if (action != "IndexEdit")
+                    {
+                        <a asp-action="IndexEdit" class="btn btn-outline-primary">Edit All</a>
+                    }
+                }
+                else
+                {
+                    if (action != "Create")
+                    {
+                        if (action != "Details")
+                        {
+                            <a asp-action="Details" asp-route-Name="@Model.Name" class="btn btn-outline-primary">Details</a>
+                        }
+
+                        if (action != "Edit")
+                        {
+                            <a asp-action="Edit" asp-route-Name="@Model.Name" class="btn btn-outline-primary">Edit</a>
+                        }
+
+                        if (action != "Delete")
+                        {
+                            <a asp-action="Delete" asp-route-Name="@Model.Name" class="btn btn-outline-danger">Delete</a>
+                        }
+                    }
+                }
+            }
+
+            //Users
+            if (controller == "Users")
+            {
+                if (action != "Index")
+                {
+                    <a asp-action="Index" class="btn btn-outline-primary"><i class="fas fa-chevron-left"></i> Back to Users</a>
+                }
+
+                if (action != "Create")
+                {
+                    <a asp-action="Create" class="btn btn-outline-primary">Add User</a>
+                }
+
+                if (action != "Index" && action != "Create")
+                {
+                    if (action != "Edit")
+                    {
+                        <a asp-action="Edit" asp-route-Id="@Model.Id" class="btn btn-outline-primary">Edit</a>
+                    }
+                    if (action != "Delete")
+                    {
+                        <a asp-action="Delete" asp-route-Id="@Model.Id" class="btn btn-outline-danger">Delete</a>
+                    }
+                }
+            }
+
+            //Roles
+            if (controller == "Roles")
+            {
+                if (action != "Index")
+                {
+                    <a asp-action="Index" class="btn btn-outline-primary"><i class="fas fa-chevron-left"></i> Back to Roles</a>
+                }
+
+                if (action != "Create")
+                {
+                    <a asp-action="Create" class="btn btn-outline-primary">Add Role</a>
+                }
+
+                if (action != "Index" && action != "Create")
+                {
+                    if (action != "Edit")
+                    {
+                        <a asp-action="Edit" asp-route-Name="@Model.RoleName" class="btn btn-outline-primary">Edit</a>
+                    }
+
+                    if (action != "Delete")
+                    {
+                        <a asp-action="Delete" asp-route-Name="@Model.RoleName" class="btn btn-outline-danger">Delete</a>
+                    }
+                }
+            }
+
+            //Identity
+            if (area == "Identity")
+            {
+                <a asp-controller="Users" asp-action="Index" class="btn btn-outline-primary"><i class="fas fa-chevron-left"></i> Back to Users</a>
+            }
+        }
+    </div>
+
+    @{
+        //Portfolios
+        if (controller == "Portfolios")
+        {
+            @:&nbsp;
+            <a asp-controller="Categories" asp-action="Index" class="btn btn-outline-info">Categories</a>
+        }
+
+        //Categories
+        if (controller == "Categories")
+        {
+            @:&nbsp;
+            <a asp-controller="Portfolios" asp-action="Index" class="btn btn-outline-info">All Portfolios</a>
+        }
+    }
+    <hr />
+</div>

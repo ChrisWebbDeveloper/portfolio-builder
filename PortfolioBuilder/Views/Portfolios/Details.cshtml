@@ -1,0 +1,49 @@
+﻿@model PortfolioBuilder.Models.Portfolio
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="page-container">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <partial name="_NavigationPartial" />
+    }
+
+    @if (!User.Identity.IsAuthenticated && Model.Private && !String.IsNullOrEmpty(Model.PasswordHash))
+    {
+        <a asp-action="PasswordProtected" asp-route-Name="@Model.Name" class="btn btn-outline-primary">Leave Private Portfolio</a>
+    }
+
+    <h1>@Model.Name</h1>
+    <br />
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <partial name="Item Display/_PortfolioDetailsPartial" model="Model" />
+    }
+
+    @if (!String.IsNullOrEmpty(Model.Description))
+    {
+        <div class="row">
+            <div class="col-12">
+                <p class="multiline">@Model.Description</p>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="cat-port-display row modal-scroller">
+    @foreach (var portfolioPhoto in Model.Photos.OrderBy(ph => ph.Position))
+    {
+        string imgWidthClass = !String.IsNullOrEmpty(portfolioPhoto.Width.ToString()) ? "col-md-" + portfolioPhoto.Width.ToString() : "";
+
+        <div class="col-12 @imgWidthClass">
+            <img src="~/images/@portfolioPhoto.Photo.FilePath" alt="@portfolioPhoto.Photo.FilePath" title="@portfolioPhoto.Photo.Name" class="modal-toggler" data-toggle="modal" data-target="#photo-modal-@portfolioPhoto.Photo.Id" />
+        </div>
+
+        <partial name="Item Display/_PhotoModalPartial" model="portfolioPhoto.Photo" />
+    }
+</div>
+
+@Html.Raw(Model.CustomHtml)

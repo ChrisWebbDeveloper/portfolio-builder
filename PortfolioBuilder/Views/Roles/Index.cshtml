@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+
+@{
+    ViewData["Title"] = "Roles";
+}
+
+<div class="page-container">
+    <partial name="_NavigationPartial" />
+
+    <h1>@ViewData["Title"]</h1>
+    <br />
+
+    @foreach (var role in Model)
+    {
+        <div class="row">
+            <h3 class="col-12 col-md-8">@role.Name</h3>
+            <div class="col-12 col-md-4 btn-group" role="group">
+                <a class="btn btn-outline-primary" asp-action="Edit" asp-route-Name="@role.Name">Edit</a>
+                <a class="btn btn-outline-danger" asp-action="Delete" asp-route-Name="@role.Name">Delete</a>
+            </div>
+        </div>
+        <br />
+    }
+</div>

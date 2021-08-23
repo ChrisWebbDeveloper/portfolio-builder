@@ -1,0 +1,92 @@
+﻿.link-animate-left,
+.link-animate-right,
+.link-animate-top,
+.link-animate-bottom {
+    position: relative;
+    z-index: 1;
+
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        z-index: -1;
+        background-color: $siteBlack;
+    }
+
+    &:hover {
+        text-decoration: none;
+        color: $siteWhite !important;
+    }
+}
+
+
+.link-animate-dark {
+    &::before {
+        background-color: white;
+    }
+
+    &:hover {
+        color: $siteBlack !important;
+    }
+}
+
+.link-animate-left,
+.link-animate-top,
+.link-animate-bottom {
+    &::before {
+        left: 0;
+    }
+}
+
+.link-animate-right,
+.link-animate-top,
+.link-animate-bottom {
+    &::before {
+        right: 0;
+    }
+}
+
+.link-animate-left,
+.link-animate-right,
+.link-animate-top {
+    &::before {
+        top: 0;
+    }
+}
+
+.link-animate-left,
+.link-animate-right,
+.link-animate-bottom {
+    &::before {
+        bottom: 0;
+    }
+}
+
+.link-animate-left,
+.link-animate-right {
+    &::before {
+        width: 0;
+        height: 100%;
+    }
+
+    &:hover {
+        &::before {
+            width: 100%;
+        }
+    }
+}
+
+.link-animate-top,
+.link-animate-bottom {
+    &::before {
+        width: 100%;
+        height: 0;
+    }
+
+    &:hover {
+        &::before {
+            height: 100%;
+        }
+    }
+}

@@ -1,0 +1,10 @@
+﻿@model PortfolioBuilder.Models.Portfolio
+
+<div class="row">
+    <div class="col-12">
+        <div class="form-group">
+            <textarea asp-for="CustomHtml" rows="12" class="form-control" placeholder="Enter any custom HTML here"></textarea>
+            <span asp-validation-for="CustomHtml" class="text-danger"></span>
+        </div>
+    </div>
+</div>

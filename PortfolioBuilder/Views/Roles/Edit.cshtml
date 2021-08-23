@@ -1,0 +1,36 @@
+﻿@model PortfolioBuilder.ViewModels.RoleViewModel
+
+@{
+    ViewData["Title"] = Model.RoleName + " - Edit";
+}
+
+<div class="page-container">
+    <partial name="_NavigationPartial" />
+
+    <h1>@ViewData["Title"]</h1>
+
+    <br />
+
+    <form asp-action="Edit" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="row">
+            <div class="col-12">
+                <input asp-for="RoleName" class="form-control" placeholder="Role Name" />
+                <span asp-validation-for="RoleName" class="text-danger"></span>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            <input type="submit" value="Edit" class="btn btn-primary submit-button" />
+        </div>
+    </form>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

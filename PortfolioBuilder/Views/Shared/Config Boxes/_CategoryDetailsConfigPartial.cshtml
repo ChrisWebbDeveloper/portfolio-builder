@@ -1,0 +1,43 @@
+﻿@model PortfolioBuilder.Models.Category
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<div class="row">
+    <div class="col-12">
+        <input asp-for="Name" class="form-control-h1" placeholder="Portfolio Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-12 col-md-5">
+        <dl class="row">
+            <dt class="col-6">
+                <label asp-for="Published" class="form-check-label"></label>
+            </dt>
+            <dd class="col-6">
+                <input class="form-check-input position-relative float-right" asp-for="Published" />
+            </dd>
+        </dl>
+    </div>
+    <div class="col-12 col-md-6 offset-md-1">
+        <strong>@Html.DisplayNameFor(model => model.FeaturedPhotoId)</strong>
+
+        <div class="config-carousel item-selector">
+            <input type="radio" class="item-selector-radio-none d-none" name="FeaturedPhotoId" value="">
+            @foreach (var photo in ViewBag.AllPhotos)
+            {
+                <div class="item-display-box item-selector-box">
+                    <div>
+                        <input type="radio" asp-for="FeaturedPhotoId" value="@photo.Id" class="item-selector-radio">
+                        <img src="~/images/@photo.FilePath" alt="@photo.FilePath" title="@photo.Name" class="item-to-display" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<hr />

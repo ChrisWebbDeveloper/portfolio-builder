@@ -1,0 +1,57 @@
+﻿@model PortfolioBuilder.Models.Portfolio
+
+<div class="cat-port-display-box">
+    @if (Model.FeaturedPhoto != null)
+    {
+        <img src="~/images/@Model.FeaturedPhoto.FilePath" alt="@Model.FeaturedPhoto.FilePath" title="@Model.FeaturedPhoto.Name" />
+    }
+    else
+    {
+        <div class="no-photo"></div>
+    }
+
+    <div class="cat-port-details-overlay">
+        @if (User.Identity.IsAuthenticated && (!Model.Published || Model.Featured || Model.Private))
+        {
+            <p>
+                @if (!Model.Published)
+                {
+                    <i class="fas fa-paint-brush"></i>@:&nbsp;&nbsp;Draft
+                }
+
+                @if (!Model.Published && Model.Featured)
+                {
+                    @:&nbsp;&nbsp;|&nbsp;&nbsp;
+                }
+
+                @if (Model.Featured)
+                {
+                    <i class="fas fa-star"></i>@:&nbsp;&nbsp;Featured
+                }
+
+                @if ((!Model.Published && Model.Private) || (Model.Featured && Model.Private))
+                {
+                    @:&nbsp;&nbsp;|&nbsp;&nbsp;
+                }
+
+                @if (Model.Private)
+                {
+                    <i class="fas fa-lock"></i>@:&nbsp;Private
+                }
+            </p>
+        }
+
+        <a class="cat-port-link" asp-controller="Portfolios" asp-action="Details" asp-route-Name="@Model.Name">
+            <h3>@Html.DisplayFor(modelitem => Model.Name)</h3>
+        </a>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <p>
+                <a asp-controller="Portfolios" asp-action="Edit" asp-route-Name="@Model.Name">Edit</a>
+                |
+                <a asp-controller="Portfolios" asp-action="Delete" asp-route-Name="@Model.Name">Delete</a>
+            </p>
+        }
+    </div>
+</div>

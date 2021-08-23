@@ -1,0 +1,82 @@
+﻿.cat-port-display-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    cursor: pointer;
+    position: relative;
+
+    img {
+        @extend .img-fluid;
+        @extend .px-0;
+        display: flex;
+        max-height: 600px;
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+    }
+
+    .no-photo {
+        background: $siteDarkBlue;
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        height: 600px;
+    }
+
+    .cat-port-details-overlay {
+        @extend .text-light;
+        position: absolute;
+        text-align: center;
+
+        a {
+            @extend .text-light;
+
+            &.cat-port-link:hover {
+                color: $siteWhite !important;
+                text-decoration: none !important;
+            }
+        }
+    }
+
+    img, .no-photo {
+        filter: brightness(100%);
+        transition: 0.1s filter ease-out;
+    }
+
+    &:hover {
+        img, .no-photo {
+            filter: brightness(50%);
+        }
+    }
+
+    &.item-deleter-box:hover {
+        img, .no-photo {
+            filter: unset;
+        }
+    }
+}
+
+.item-sorter-not-displayed > .cat-port-display-box {
+    img {
+        max-height: 200px;
+        width: 100%;
+    }
+
+    .no-photo {
+        max-height: 200px;
+        width: 400px;
+    }
+
+    .cat-port-details-overlay {
+        width: 100%;
+        bottom: 40%;
+    }
+}
+
+.cat-port-display {
+    img {
+        width: 100%;
+    }
+}

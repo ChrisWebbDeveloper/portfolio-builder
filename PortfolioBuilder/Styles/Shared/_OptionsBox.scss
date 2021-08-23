@@ -1,0 +1,18 @@
+﻿.all-options-box {
+    @extend .p-4;
+    @extend .mb-4;
+    box-shadow: $boxShadow;
+
+    &.add-active {
+        background-color: $siteBlueLight;
+    }
+
+    &.delete-active {
+        background-color: $siteRedLight;
+    }
+}
+
+.option-box {
+    @extend .p-1;
+    @extend .mt-3;
+}

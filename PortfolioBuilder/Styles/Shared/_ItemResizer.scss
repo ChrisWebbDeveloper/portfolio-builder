@@ -1,0 +1,16 @@
+﻿.item-resizer-box {
+    display: flex;
+    align-items: center;
+
+    .item-resizer-button {
+        @extend .py-5;
+        @extend .px-2;
+        @extend .bg-dark;
+        @extend .text-white;
+        display: none;
+        right: 0;
+        position: absolute;
+        border: 2px solid white;
+        border-right: 0;
+    }
+}

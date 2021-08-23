@@ -1,0 +1,17 @@
+﻿.item-deleter-box {
+    .item-to-delete {
+        @extend .pt-4;
+        @extend .pb-3;
+        cursor: pointer;
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+
+    .item-deleter-get {
+        position: absolute;
+        right: 0;
+        top: 5px;
+        margin-right: 15px;
+    }
+}

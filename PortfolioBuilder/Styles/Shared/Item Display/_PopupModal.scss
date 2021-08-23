@@ -1,0 +1,10 @@
+﻿.popup-modal {
+    .modal-dialog {
+        margin-top: 35vh !important;
+
+        .modal-body {
+            @extend .py-4;
+            text-align: center;
+        }
+    }
+}

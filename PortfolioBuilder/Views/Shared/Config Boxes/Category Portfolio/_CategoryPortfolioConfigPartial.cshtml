@@ -1,0 +1,81 @@
+﻿@{
+    IEnumerable<PortfolioBuilder.ViewModels.CategoryPortfolioDataViewModel> portfolios = ViewBag.PortfoliosList;
+}
+
+<div class="config-box item-sorter item-resizer item-deleter">
+    <div class="all-options-box">
+        <button class="btn btn-outline-primary option-button add-option-button" data-toggle="button" aria-pressed="false">Add Photos</button>
+        <button class="btn btn-outline-danger option-button delete-option-button" data-toggle="button" aria-pressed="false">Remove Photos</button>
+
+        <div class="option-box add-option-box">
+            <div class="config-carousel item-sorter-not-displayed item-resizer-ignore item-deleter-ignore ">
+                @foreach (var portfolio in portfolios.Where(ph => ph.Selected == false))
+                {
+                    <partial name="Config Boxes/Category Portfolio/_CategoryPortfolioDisplayBoxPartial" model="portfolio" />
+                }
+            </div>
+
+            <div class="config-box-msg">
+                <p>Drag the portfolios that you want to add into the box below</p>
+                <i class="fas fa-arrow-down fa-2x"></i>
+            </div>
+        </div>
+
+        @*Cannot use partial due to inclusion of model and direct delete functionality, not to be included here*@
+        <div class="option-box delete-option-box">
+            <div class="float-left">
+                <button class="btn btn-outline-danger select-all-button" type="button">Select All</button>
+                <button class="btn btn-outline-danger deselect-all-button" type="button">Deselect All</button>
+            </div>
+
+            <div class="float-right">
+                <button class="btn btn-outline-danger delete-button" type="button">Remove</button>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="items-to-display item-sorter-display item-resizer-display item-deleter-display">
+        <div class="config-box-msg item-sorter-msg item-deleter-msg">
+            <i class="far fa-folder-open fa-2x"></i>
+            <p>Drag and drop portfolios here from above to add them to the page. You can also sort and shuffle them about however you wish!</p>
+        </div>
+
+        @foreach (var portfolio in portfolios.Where(ph => ph.Selected == true).OrderBy(ph => ph.Position))
+        {
+            <partial name="Config Boxes/Category Portfolio/_CategoryPortfolioDisplayBoxPartial" model="portfolio" />
+        }
+    </div>
+
+    @*Setter Inputs*@
+    <div class="item-setter item-sorter-setter item-deleter-setter">
+        @foreach (var portfolio in portfolios)
+        {
+            <div>
+                <input type="checkbox"
+                       class="set-selected"
+                       name="selectedPortfolios"
+                       value="@portfolio.PortfolioId"
+                       @(Html.Raw(portfolio.Selected ? "checked=\"checked\"" : "")) />
+                <input type="number"
+                       class="set-id"
+                       name="portfolioIds"
+                       value="@portfolio.PortfolioId"
+                       readonly />
+                <input type="number"
+                       class="set-position"
+                       name="selectedPortfolioPositions"
+                       min="0"
+                       value="@portfolio.Position" />
+                <input type="number"
+                       class="set-width"
+                       name="selectedPortfolioWidths"
+                       min="1"
+                       max="12"
+                       value="@portfolio.Width" />
+            </div>
+            <br />
+        }
+    </div>
+</div>

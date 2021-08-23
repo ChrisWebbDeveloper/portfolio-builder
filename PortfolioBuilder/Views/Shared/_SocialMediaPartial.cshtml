@@ -1,0 +1,22 @@
+﻿<div class="social-media-box">
+    @if (ViewData["Facebook"] != null)
+    {
+        <a class="social-media-link facebook-link @ViewData["NavLinkClass"]" href="https://www.facebook.com/@ViewData["Facebook"]/" target="_blank">
+            <i class="fab fa-facebook-f fa-lg"></i>
+        </a>
+    }
+
+    @if (ViewData["Instagram"] != null)
+    {
+        <a class="social-media-link instagram-link @ViewData["NavLinkClass"]" href="https://www.instagram.com/@ViewData["Instagram"]/" target="_blank">
+            <i class="fab fa-instagram fa-lg"></i>
+        </a>
+    }
+
+    @if (ViewData["LinkedIn"] != null)
+    {
+        <a class="social-media-link linkedin-link @ViewData["NavLinkClass"]" href="https://www.linkedin.com/in/@ViewData["LinkedIn"]/" target="_blank">
+            <i class="fab fa-linkedin-in fa-lg"></i>
+        </a>
+    }
+</div>

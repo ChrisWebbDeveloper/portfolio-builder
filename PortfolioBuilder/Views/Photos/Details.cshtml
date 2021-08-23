@@ -1,0 +1,110 @@
+﻿@model PortfolioBuilder.Models.Photo
+
+@{
+    ViewData["Title"] = Model.FilePath + " - Details";
+}
+
+<div class="page-container">
+    <partial name="_NavigationPartial" />
+
+    <div class="row">
+        @if (String.IsNullOrEmpty(Model.Name) && String.IsNullOrEmpty(Model.Description) && Model.Portfolios.Count == 0 && Model.FeaturedInPortfolios.Count > 0 && Model.FeaturedInCategories.Count > 0 && Model.FeaturedInHomeCarousel.Count > 0 && Model.FeaturedInAbout.Count > 0)
+        {
+            <div class="col-12">
+                <img src="~/images/@Model.FilePath" alt="@Model.FilePath" title="@Model.Name" class="photo-display-lg" />
+            </div>
+        }
+        else
+        {
+            <div class="col-12 col-lg-8">
+                <img src="~/images/@Model.FilePath" alt="@Model.FilePath" title="@Model.Name" class="photo-display-lg" />
+            </div>
+            <div class="col-12 col-lg-4">
+                @if (!String.IsNullOrEmpty(Model.Name))
+                {
+                    <h4>@Html.DisplayFor(model => model.Name)</h4>
+                }
+
+                @if (!String.IsNullOrEmpty(Model.Name) && (!String.IsNullOrEmpty(Model.Description) || Model.Portfolios.Count > 0))
+                {
+                    <hr />
+                }
+
+                @if (!String.IsNullOrEmpty(Model.Description))
+                {
+                    <p class="multiline">@Html.DisplayFor(model => model.Description)</p>
+                }
+
+                @if (!String.IsNullOrEmpty(Model.Description) && Model.Portfolios.Count > 0)
+                {
+                    <hr />
+                }
+
+
+                @if (Model.Portfolios.Count > 0 || Model.FeaturedInPortfolios.Count > 0 || Model.FeaturedInCategories.Count > 0 || Model.FeaturedInHomeCarousel.Count > 0 || Model.FeaturedInAbout.Count > 0)
+                {
+                    <h5>Uses</h5>
+
+                    @if (Model.Portfolios.Count > 0)
+                    {
+                        <p>
+                            <strong>@Html.DisplayNameFor(model => model.Portfolios)</strong>
+                            <ul>
+                                @foreach (var portfolioPhoto in Model.Portfolios)
+                                {
+                                    <li>
+                                        @Html.DisplayFor(modelItem => portfolioPhoto.Portfolio.Name)
+                                    </li>
+                                }
+                            </ul>
+                        </p>
+                    }
+
+                    @if (Model.FeaturedInPortfolios.Count > 0)
+                    {
+                        <p>
+                            <strong>@Html.DisplayNameFor(model => model.FeaturedInPortfolios)</strong>
+                            <ul>
+                                @foreach (var portfolio in Model.FeaturedInPortfolios)
+                                {
+                                    <li>
+                                        @Html.DisplayFor(modelItem => portfolio.Name)
+                                    </li>
+                                }
+                            </ul>
+                        </p>
+                    }
+
+                    @if (Model.FeaturedInCategories.Count > 0)
+                    {
+                        <p>
+                            <strong>@Html.DisplayNameFor(model => model.FeaturedInCategories)</strong>
+                            <ul>
+                                @foreach (var category in Model.FeaturedInCategories)
+                                {
+                                    <li>
+                                        @Html.DisplayFor(modelItem => category.Name)
+                                    </li>
+                                }
+                            </ul>
+                        </p>
+                    }
+
+                    @if (Model.FeaturedInHomeCarousel.Count > 0)
+                    {
+                        <p>
+                            <strong>@Html.DisplayNameFor(model => model.FeaturedInHomeCarousel)</strong>
+                        </p>
+                    }
+
+                    @if (Model.FeaturedInAbout.Count > 0)
+                    {
+                        <p>
+                            <strong>@Html.DisplayNameFor(model => model.FeaturedInAbout)</strong>
+                        </p>
+                    }
+                }
+            </div>
+        }
+    </div>
+</div>

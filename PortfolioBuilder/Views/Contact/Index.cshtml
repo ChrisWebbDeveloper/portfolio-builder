@@ -1,0 +1,93 @@
+﻿@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+@model PortfolioBuilder.Models.Contact
+
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<div class="page-container">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <partial name="_NavigationPartial" />
+    }
+
+    <h1>@ViewData["Title"]</h1>
+    <br />
+
+    @if (Model.Message != null)
+    {
+        <div class="row">
+            <p class="col-12 multiline">@Model.Message</p>
+        </div>
+    }
+
+    <div class="row">
+        @if (Model.Name != null)
+        {
+            <div class="col-12 col-md-6 contact-box">
+                <div class="row">
+                    <div class="col-2 contact-icon">
+                        <i class="fas fa-user fa-2x"></i>
+                    </div>
+                    <div class="col-10 contact-info">
+                        @Model.Name
+                    </div>
+                </div>
+            </div>
+        }
+
+        @if (Model.Location != null)
+        {
+            <div class="col-12 col-md-6 contact-box">
+                <div class="row">
+                    <div class="col-2 contact-icon">
+                        <i class="fas fa-map-marker-alt fa-2x"></i>
+                    </div>
+                    <div class="col-10 contact-info">
+                        @Model.Location
+                    </div>
+                </div>
+            </div>
+        }
+
+        @if (Model.PhoneNo != null)
+        {
+            <div class="col-12 col-md-6 contact-box">
+                <a href="tel:@Model.PhoneNo" class="contact-link">
+                    <div class="row">
+                        <div class="col-2 contact-icon">
+                            <i class="fas fa-mobile-alt fa-2x"></i>
+                        </div>
+                        <div class="col-10 contact-info">
+                            @Model.PhoneNo
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+
+        @if (Model.Email != null)
+        {
+            <div class="col-12 col-md-6 contact-box">
+                <a href="mailto:@Model.Email" class="contact-link">
+                    <div class="row">
+                        <div class="col-2 contact-icon">
+                            <i class="fas fa-envelope fa-2x"></i>
+                        </div>
+                        <div class="col-10 contact-info">
+                            @Model.Email
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="social-icon-boxes">
+                <partial name="_SocialMediaPartial" />
+            </div>
+        </div>
+    </div>
+</div>

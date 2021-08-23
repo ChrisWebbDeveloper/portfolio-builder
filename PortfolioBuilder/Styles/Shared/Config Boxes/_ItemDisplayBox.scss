@@ -1,0 +1,21 @@
+﻿.item-display-box {
+    @extend .px-0;
+    background-color: white;
+    box-shadow: $boxShadow;
+
+    &.select-checked {
+        background-color: $siteBlueLight;
+    }
+
+    &.delete-checked {
+        background-color: $siteRedLight;
+    }
+
+    .item-to-display {
+        @extend .img-fluid;
+        @extend .mx-auto;
+        @extend .px-3;
+        display: flex;
+        max-height: 200px;
+    }
+}

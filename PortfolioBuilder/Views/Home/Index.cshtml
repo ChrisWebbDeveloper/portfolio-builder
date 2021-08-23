@@ -1,0 +1,41 @@
+﻿@model PortfolioBuilder.ViewModels.HomeViewModel
+
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="home-carousel carousel">
+    @foreach (var photo in Model.CarouselPhotos)
+    {
+        <img src="~/images/@photo.Photo.FilePath" alt="@photo.Photo.FilePath" title="@photo.Photo.Name" class="carousel-photo" />
+    }
+</div>
+
+<div class="home-content">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="edit-btn">
+            <a asp-action="Edit" class="btn btn-outline-primary">Edit</a>
+        </div>
+    }
+
+    <div class="featured-portolios-box">
+        @foreach (var featuredPortfolio in Model.FeaturedPortfolios.OrderBy(m => m.Position))
+        {
+            if (featuredPortfolio.Portfolio.Published || User.Identity.IsAuthenticated)
+            {
+                <h5 class="featured-portolio">
+                    <a asp-controller="Portfolios" asp-action="Details" asp-route-Name="@featuredPortfolio.Portfolio.Name">
+                        @featuredPortfolio.Portfolio.Name
+
+                        @if (!featuredPortfolio.Portfolio.Published && User.Identity.IsAuthenticated)
+                        {
+                            @:&nbsp;<i class="fas fa-paint-brush"></i>&nbsp;&nbsp;Draft
+                        }
+                    </a>
+                </h5>
+            }
+        }
+    </div>
+</div>

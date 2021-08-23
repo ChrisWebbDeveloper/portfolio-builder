@@ -1,0 +1,37 @@
+﻿.contact-box {
+    @extend .pb-4;
+
+    .row {
+        @extend .no-gutters;
+
+        .contact-icon {
+            @extend .py-1;
+            text-align: center;
+        }
+
+        .contact-info {
+            @extend .py-1;
+            @extend .pl-3;
+        }
+    }
+
+    .contact-link {
+        @extend .text-dark;
+        text-decoration: none;
+
+        .contact-icon {
+            @extend .text-light;
+            @extend .bg-dark;
+        }
+
+        .contact-info {
+            @extend .link-animate-left;
+        }
+
+        &:hover {
+            .contact-info {
+                @extend .link-animate-left, :hover;
+            }
+        }
+    }
+}

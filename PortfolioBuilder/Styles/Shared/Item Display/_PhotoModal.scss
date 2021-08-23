@@ -1,0 +1,59 @@
+﻿.photo-modal {
+    padding-left: 4rem !important;
+    padding-right: 4rem !important;
+
+    .modal-dialog {
+        @extend .my-0;
+        max-width: 1600px;
+        height: 100vh;
+
+        .modal-content {
+            top: 10vh;
+            background: none;
+            border: none;
+
+            .modal-body {
+                .modal-photo-display-box,
+                .modal-info-box {
+                    @extend .my-2;
+                }
+
+                .modal-photo-display {
+                    @extend .img-fluid;
+                    @extend .mx-auto;
+                    display: block;
+                    max-height: 75vh;
+                    width: auto;
+                }
+
+                .modal-info-box {
+                    .modal-info {
+                        @extend .p-3;
+                        @extend .text-break;
+                        background: white;
+                        height: 100%;
+                    }
+                }
+
+                .photo-nav-btns {
+                    @extend .mt-3;
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    .btn-prev-box,
+    .btn-next-box {
+        position: fixed;
+        top: 45vh;
+    }
+
+    .btn-prev-box {
+        left: 30px;
+    }
+
+    .btn-next-box {
+        right: 30px;
+    }
+}

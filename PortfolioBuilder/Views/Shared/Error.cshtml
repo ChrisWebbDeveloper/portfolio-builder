@@ -1,0 +1,32 @@
+﻿@model PortfolioBuilder.ViewModels.ErrorViewModel
+
+@{
+    ViewData["Title"] = ViewBag.StatusCode + " Error";
+}
+
+<div class="page-container">
+    <h1 class="text-danger">@ViewBag.StatusCode</h1>
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <h2 class="text-danger">@ViewBag.ErrorMessage</h2>
+    }
+
+    @if (ViewBag.ErrorDescription != null)
+    {
+        <p>@ViewBag.ErrorDescription</p>
+    }
+
+    @if (Model != null)
+    {
+        if (Model.ShowRequestId)
+        {
+            <p>
+                <strong>Request ID:</strong> <code>@Model.RequestId</code>
+            </p>
+        }
+    }
+
+    <a asp-action="index" asp-controller="home">
+        Go back to the Home Page
+    </a>
+</div>

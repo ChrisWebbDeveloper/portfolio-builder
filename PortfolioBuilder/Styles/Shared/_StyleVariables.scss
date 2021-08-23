@@ -1,0 +1,33 @@
+﻿//Site Colors
+$siteBlue: #188AD0;
+$siteLightBlue: #92dce5;
+$siteDarkBlue: #13264a;
+$siteBlack: #1b1e24;
+$siteGrey: #7c7c7c;
+$siteWhite: #f5f5f5;
+$siteRed: #d02a18;
+
+//Site Color Variants
+$siteBlueLight: lighten($siteBlue, 5%);
+$siteRedLight: lighten($siteRed, 5%);
+
+//Site Fonts
+$siteFont: 'Roboto', sans-serif;
+
+//Social Media Brand Colors:
+$facebookBlue: #1778F2;
+$instagramPink: #d93175;
+$linkedInBlue: #0a66c2;
+
+//Input
+$inputBorder: 1px solid #ced4da;
+
+//Box Shadow
+$boxShadow: 0 5px 20px 0 rgba(0,0,0,0.15);
+
+//Footer
+$footerHeight: 60px;
+
+//Bootstrap Overrides
+$theme-colors: ( "primary": $siteBlue, "secondary": $siteLightBlue, "info": $siteDarkBlue, "danger": $siteRed, "dark": $siteBlack, "light": $siteWhite );
+$enable-rounded: false;

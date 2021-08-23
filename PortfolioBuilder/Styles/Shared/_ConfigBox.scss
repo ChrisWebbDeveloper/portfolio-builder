@@ -1,0 +1,34 @@
+﻿.config-box {
+    @extend .form-group;
+    @extend .p-3;
+    border: $inputBorder;
+
+    button {
+        @extend .my-1;
+    }
+
+    .items-to-display {
+        @extend .mt-2;
+        @extend .mx-auto;
+        @extend .row;
+        @extend .p-3;
+        display: flex;
+        position: relative;
+        width: 100%;
+        box-shadow: $boxShadow;
+
+        .item-display-box {
+            @extend .mb-3;
+
+            .item-to-display {
+                max-height: none !important;
+            }
+        }
+    }
+
+    .config-box-msg {
+        @extend .pt-3;
+        text-align: center;
+        width: 100%;
+    }
+}

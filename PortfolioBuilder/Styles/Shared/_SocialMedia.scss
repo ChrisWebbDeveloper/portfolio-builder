@@ -1,0 +1,54 @@
+﻿.social-media-box {
+    .social-media-link {
+        @extend .mx-1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        width: 40px;
+        color: $siteBlack;
+        border: 2px solid;
+        border-color: $siteBlack;
+        transition: 0.1s;
+
+        &:first-child {
+            @extend .ml-0;
+        }
+
+        &:last-child {
+            @extend .mr-0;
+        }
+
+        &.text-light {
+            border-color: $siteWhite;
+        }
+
+        &:hover,
+        &.text-light:hover,
+        &.text-dark:hover {
+            color: $siteWhite !important;
+            border-color: $siteBlack;
+            background-color: $siteBlack;
+        }
+
+        &.text-light:focus,
+        &.text-light:visited {
+            color: $siteWhite !important;
+        }
+
+        &.facebook-link:hover {
+            border-color: $facebookBlue;
+            background-color: $facebookBlue;
+        }
+
+        &.instagram-link:hover {
+            border-color: $instagramPink;
+            background-color: $instagramPink;
+        }
+
+        &.linkedin-link:hover {
+            border-color: $linkedInBlue;
+            background-color: $linkedInBlue;
+        }
+    }
+}

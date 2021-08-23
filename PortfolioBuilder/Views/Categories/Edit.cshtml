@@ -1,0 +1,28 @@
+﻿@model PortfolioBuilder.Models.Category
+
+@{
+    ViewData["Title"] = Model.Name + " - Edit";
+}
+
+<form asp-action="Edit">
+    <div class="page-container">
+        <partial name="_NavigationPartial" />
+
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
+
+        <partial name="Config Boxes/_CategoryDetailsConfigPartial" />
+    </div>
+
+    <partial name="Config Boxes/Category Portfolio/_CategoryPortfolioConfigPartial" />
+
+    <div class="container">
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-primary submit-button" />
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

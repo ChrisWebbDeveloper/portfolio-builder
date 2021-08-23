@@ -1,0 +1,23 @@
+﻿@model IEnumerable<PortfolioBuilder.Models.Portfolio>
+
+@{
+    ViewData["Title"] = "Portfolios";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="page-container">
+        <partial name="_NavigationPartial" />
+    </div>
+}
+
+<div class="cat-port-display row">
+    @foreach (var portfolio in Model.OrderBy(pr => pr.Position))
+    {
+        string portWidthClass = !String.IsNullOrEmpty(portfolio.Width.ToString()) ? "col-md-" + portfolio.Width.ToString() : "";
+
+        <div class="col-12 @portWidthClass">
+            <partial name="Item Display/_PortfolioDisplayBoxPartial" model="portfolio" />
+        </div>
+    }
+</div>

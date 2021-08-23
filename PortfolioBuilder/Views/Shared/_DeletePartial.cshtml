@@ -1,0 +1,24 @@
+﻿<div class="option-box delete-option-box">
+    <div class="float-left">
+        <button class="btn btn-outline-danger select-all-button" type="button">Select All</button>
+        <button class="btn btn-outline-danger deselect-all-button" type="button">Deselect All</button>
+    </div>
+
+    <form asp-action="GeneralDelete" method="post" class="item-deleter-setter">
+        @foreach (var item in Model)
+        {
+            <div class="item-setter">
+                <input type="checkbox"
+                       class="set-selected"
+                       name="itemsToRemove"
+                       value=@item.Id />
+            </div>
+        }
+
+        <div class="float-right">
+            <input type="submit" value="Delete" class="btn btn-outline-danger delete-button" />
+        </div>
+
+        <div class="clearfix"></div>
+    </form>
+</div>

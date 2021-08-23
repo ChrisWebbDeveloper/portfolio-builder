@@ -1,0 +1,7 @@
+﻿.logout-btn {
+    @extend .btn;
+    @extend .btn-link;
+    @extend .text-left;
+    width: 100%;
+    border: none;
+}

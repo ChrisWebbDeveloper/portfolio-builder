@@ -1,0 +1,58 @@
+﻿@model PortfolioBuilder.ViewModels.UploadPhotosViewModel
+
+@{
+    ViewData["Title"] = "Add Photo";
+}
+
+<div class="page-container">
+    <partial name="_NavigationPartial" />
+
+    <h1>@ViewData["Title"]</h1>
+
+    <hr />
+
+    @if (TempData["NotUploaded"] != null)
+    {
+        <div id="not-uploaded-box">
+            <p>The file '@TempData["NotUploaded"]' was not uploaded. This is due to it being the incorrect format (jpeg, jpg, png or bmp).</p>
+        </div>
+    }
+
+    <form enctype="multipart/form-data" asp-action="Create">
+        <div class="row">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-12 col-lg-8">
+                <div class="photo-uploader form-group">
+                    <div class="photo-uploader-box">
+                        <input asp-for="Photo"
+                               class="photos-to-upload form-control-file" />
+                        <div class="row gallery"></div>
+                        <label for="photoToUpload" class="photo-uploader-msg">
+                            <i class="fas fa-upload fa-5x"></i>
+                            <br />
+                            Click here to select a file to upload, or drag and drop it into this box
+                        </label>
+                    </div>
+                </div>
+                <span asp-validation-for="Photo" class="text-danger"></span>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="form-group">
+                    <input asp-for="Name" class="form-control form-control-lg" placeholder="Name" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <textarea asp-for="Description" class="form-control" placeholder="Description" rows="10"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary submit-button" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

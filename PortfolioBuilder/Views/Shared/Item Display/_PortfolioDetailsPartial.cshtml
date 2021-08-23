@@ -1,0 +1,61 @@
+﻿@model PortfolioBuilder.Models.Portfolio
+
+<div class="row">
+    <div class="col-12 col-md-5">
+        <dl class="row">
+            <dt class="col-6">
+                @Html.DisplayNameFor(model => model.Published)
+            </dt>
+            <dd class="col-6">
+                <span class="float-right">@Html.DisplayFor(model => model.Published)</span>
+            </dd>
+            <dt class="col-6">
+                @Html.DisplayNameFor(model => model.Featured)
+            </dt>
+            <dd class="col-6">
+                <span class="float-right">@Html.DisplayFor(model => model.Featured)</span>
+            </dd>
+            <dt class="col-6">
+                @Html.DisplayNameFor(model => model.Private)
+            </dt>
+            <dd class="col-6">
+                <span class="float-right">@Html.DisplayFor(model => model.Private)</span>
+            </dd>
+            @if (!String.IsNullOrEmpty(Model.UnencryptedPassword))
+            {
+                <dt class="col-4">
+                    @Html.DisplayNameFor(model => model.UnencryptedPassword)
+                </dt>
+                <dd class="col-8">
+                    <span class="float-right">@Html.DisplayFor(model => model.UnencryptedPassword)</span>
+                </dd>
+            }
+        </dl>
+    </div>
+    <div class="col-12 col-md-6 offset-md-1">
+        @if (!String.IsNullOrEmpty(Model.FeaturedPhotoId.ToString()))
+        {
+            <div class="row">
+                <strong class="col-12 col-md-6">
+                    @Html.DisplayNameFor(model => model.FeaturedPhotoId)
+                </strong>
+                <div class="col-12 col-md-6">
+                    <img src="~/images/@Model.FeaturedPhoto.FilePath" alt="@Model.FeaturedPhoto.FilePath" title="@Model.FeaturedPhoto.Name" class="featured-photo-display" />
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <strong class="col-6">
+                    @Html.DisplayNameFor(model => model.FeaturedPhotoId)
+                </strong>
+                <div class="col-6">
+                    <span class="float-right">None</span>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<hr />

@@ -1,0 +1,37 @@
+﻿.all-photos {
+    .photo-display-box {
+        @extend .mt-2;
+        @extend .mb-4;
+
+        .item-to-delete {
+            @extend .p-3;
+            @extend .pt-4;
+            width: 100%;
+        }
+
+        .item-deleter-get {
+            @extend .mt-2;
+            margin-right: 30px;
+        }
+
+        .photo-links {
+            background-color: white;
+            text-align: center;
+            display: flex;
+            justify-content: space-around;
+
+            a {
+                @extend .text-dark;
+                @extend .py-2;
+                @extend .border-left;
+                @extend .border-dark;
+                @extend .link-animate-bottom;
+                width: 100%;
+
+                &:first-child {
+                    border-left: none !important;
+                }
+            }
+        }
+    }
+}

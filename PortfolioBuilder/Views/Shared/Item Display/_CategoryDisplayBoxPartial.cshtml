@@ -1,0 +1,34 @@
+﻿@model PortfolioBuilder.Models.Category
+
+<div class="cat-port-display-box">
+    @if (Model.FeaturedPhoto != null)
+    {
+        <img src="~/images/@Model.FeaturedPhoto.FilePath" alt="@Model.FeaturedPhoto.FilePath" title="@Model.FeaturedPhoto.Name" />
+    }
+    else
+    {
+        <div class="no-photo"></div>
+    }
+
+    <div class="cat-port-details-overlay">
+        @if (User.Identity.IsAuthenticated && !Model.Published)
+        {
+            <p>
+                <i class="fas fa-paint-brush"></i>&nbsp;&nbsp;Draft
+            </p>
+        }
+
+        <a class="cat-port-link" asp-action="Details" asp-route-Name="@Model.Name">
+            <h3>@Html.DisplayFor(modelitem => Model.Name)</h3>
+        </a>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <p>
+                <a asp-action="Edit" asp-route-Name="@Model.Name">Edit</a>
+                |
+                <a asp-action="Delete" asp-route-Name="@Model.Name">Delete</a>
+            </p>
+        }
+    </div>
+</div>

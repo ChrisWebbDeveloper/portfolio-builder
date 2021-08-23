@@ -1,0 +1,94 @@
+﻿.home-carousel {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    margin: 0 !important;
+    z-index: 0;
+
+    .carousel-photo {
+        height: 100vh;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .slick-arrow, .slick-dots {
+        top: auto;
+    }
+
+    $dotsArrowsPadding: 30px;
+    $dotsArrowsBottom: $footerHeight + $dotsArrowsPadding;
+
+    .slick-arrow {
+        $slick-nav-size: 2.5rem;
+
+        bottom: $dotsArrowsBottom;
+        z-index: 2;
+        width: $slick-nav-size;
+        height: $slick-nav-size;
+
+        &::before {
+            font-size: $slick-nav-size;
+        }
+
+        &.slick-prev {
+            left: 20px;
+        }
+
+        &.slick-next {
+            right: 20px;
+        }
+    }
+
+    .slick-dots {
+        $dotsUpToArrows: 27px;
+
+        bottom: $dotsArrowsBottom + $dotsUpToArrows;
+        z-index: 1;
+
+        li {
+            @extend .mx-3;
+
+            button {
+                &::before {
+                    align-content: center;
+                    font-size: 0.6rem;
+                    opacity: 0.75;
+                    color: white;
+                }
+
+                &:hover::before, &:focus::before {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+.home-content {
+    @extend .px-3;
+    position: relative;
+
+    .edit-btn {
+        @extend .py-3;
+    }
+
+    .featured-portolios-box {
+        margin-top: 10vh;
+
+        .featured-portolio, .featured-portolio a {
+            @extend .text-light;
+        }
+
+        .featured-portolio {
+            @extend .my-4;
+
+            a {
+                @extend .p-2;
+                @extend .my-2;
+                @extend .link-animate-left;
+                @extend .link-animate-dark;
+            }
+        }
+    }
+}

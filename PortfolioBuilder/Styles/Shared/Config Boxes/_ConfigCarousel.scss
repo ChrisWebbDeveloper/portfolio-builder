@@ -1,0 +1,19 @@
+﻿.config-carousel {
+    @extend .bg-white;
+    @extend .p-2;
+    width: 100%;
+    overflow: auto;
+    white-space: nowrap;
+    border: $inputBorder;
+
+    .item-display-box {
+        @extend .m-3;
+        @extend .py-3;
+        display: inline-block;
+    }
+
+    .item-deleter-box > .item-to-delete {
+        @extend .pt-0;
+        @extend .pb-0;
+    }
+}

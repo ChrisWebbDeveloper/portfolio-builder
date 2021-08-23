@@ -1,0 +1,77 @@
+﻿@model IEnumerable<PortfolioBuilder.Models.Photo>
+
+@{
+    ViewData["Title"] = "Photos";
+}
+
+<div class="page-container">
+    <h1>@ViewData["Title"]</h1>
+
+    <br />
+
+    <div class="item-deleter">
+        <div class="all-options-box">
+            <button class="btn btn-outline-primary option-button add-option-button" data-toggle="button" aria-pressed="false">Add Photos</button>
+            <button class="btn btn-outline-danger option-button delete-option-button" data-toggle="button" aria-pressed="false">Delete Photos</button>
+
+            <div class="option-box add-option-box photo-uploader">
+                <form enctype="multipart/form-data" asp-action="UploadPhotos" method="post">
+                    <div class="form-group photo-uploader-box">
+                        <input type="file"
+                               accept="image/*"
+                               multiple
+                               name="photosToUpload"
+                               class="photos-to-upload form-control-file" />
+                        <label for="photosToUpload" class="photo-uploader-msg">
+                            <i class="fas fa-upload fa-5x"></i>
+                            <br />
+                            Click here to select files to upload, or drag and drop them into this box
+                        </label>
+                        <div class="row gallery"></div>
+                    </div>
+
+                    <input type="submit" value="Add" class="btn btn-outline-primary float-left photo-uploader-button" />
+                    <a class="btn btn-outline-primary float-right" id="add-single-photo-button" asp-action="Create">Add Single Photo</a>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+
+            <partial name="_DeletePartial" />
+
+        </div>
+
+        @if (TempData["NotUploaded"] != null)
+        {
+            <div id="not-uploaded-box">
+                <p>The following files were not uploaded. This is due to them being the incorrect format (jpeg, jpg, png or bmp):</p>
+                <ul>
+                    @foreach (var item in (string[])TempData["NotUploaded"])
+                    {
+                        <li>@item</li>
+                    }
+                </ul>
+            </div>
+        }
+
+        <div class="all-photos row modal-scroller">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="photo-display-box item-display-box item-deleter-box">
+                        <input type="checkbox" class="item-setter-get-id item-deleter-get" value="@item.Id" />
+                        <div class="item-to-delete modal-toggler" data-toggle="modal" data-target="#photo-modal-@item.Id">
+                            <img src="~/images/@item.FilePath" alt="@item.FilePath" title="@item.Name" class="item-to-display" id="photo-@item.Id" />
+                        </div>
+                        <div class="photo-links">
+                            <a asp-action="Details" asp-route-Id="@item.Id">Details</a>
+                            <a asp-action="Edit" asp-route-Id="@item.Id">Edit</a>
+                            <a asp-action="Delete" asp-route-Id="@item.Id">Delete</a>
+                        </div>
+                    </div>
+                </div>
+
+                <partial name="Item Display/_PhotoModalPartial" model="item" />
+            }
+        </div>
+    </div>
+</div>

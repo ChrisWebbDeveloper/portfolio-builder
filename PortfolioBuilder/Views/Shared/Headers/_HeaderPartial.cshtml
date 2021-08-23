@@ -1,0 +1,23 @@
+﻿@{
+    string controller = (ViewContext.RouteData.Values["controller"] ?? "").ToString();
+    string action = (ViewContext.RouteData.Values["action"] ?? "").ToString();
+}
+
+@if (controller == "Home" && action == "Index")
+{
+    ViewData["NavLinkClass"] = "text-light";
+
+    <nav class="navbar navbar-dark">
+        <partial name="Headers/_HeaderContentPartial" view-data="ViewData" />
+    </nav>
+}
+else
+{
+    ViewData["NavLinkClass"] = "text-dark";
+
+    <nav class="navbar navbar-light">
+        <div class="container">
+            <partial name="Headers/_HeaderContentPartial" view-data="ViewData" />
+        </div>
+    </nav>
+}

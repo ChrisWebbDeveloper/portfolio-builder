@@ -1,0 +1,72 @@
+﻿@model IEnumerable<PortfolioBuilder.Models.Category>
+
+@{
+    ViewData["Title"] = "Edit All Categories";
+}
+
+<div class="item-sorter item-resizer item-deleter">
+    <div class="page-container">
+        <partial name="_NavigationPartial" />
+
+        <h1>@ViewData["Title"]</h1>
+    </div>
+
+    <div class="all-options-box">
+        <button class="btn btn-outline-danger option-button delete-option-button" data-toggle="button" aria-pressed="false">Delete Portfolios</button>
+        <partial name="_DeletePartial" />
+    </div>
+
+    <div class="cat-port-display row items-to-display item-sorter-display item-resizer-display item-deleter-display">
+        @foreach (var category in Model.OrderBy(ct => ct.Position))
+        {
+            string catWidthClass = !String.IsNullOrEmpty(category.Width.ToString()) ? "col-md-" + category.Width.ToString() : "";
+
+            <div class="cat-port-display-box item-sorter-box item-display-box item-resizer-box item-deleter-box col-12 @catWidthClass" id="item-@category.Id">
+                <input type="checkbox" class="item-setter-get-id item-deleter-get position-absolute" value="@category.Id" />
+                <div class="item-to-delete">
+                    <partial name="Item Display/_CategoryDisplayBoxPartial" model="category" />
+                </div>
+                <partial name="_DragArrowPartial" />
+            </div>
+        }
+    </div>
+
+    <form asp-action="GeneralEdit" method="post">
+        @*Setter Inputs*@
+        <div class="item-setter item-sorter-setter item-resizer-setter">
+            @foreach (var category in Model)
+            {
+                <div>
+                    <input type="number"
+                           class="set-id"
+                           name="categoryIds"
+                           value="@category.Id"
+                           readonly />
+                    <input type="number"
+                           class="set-position"
+                           name="categoryPositions"
+                           min="0"
+                           value="@category.Position" />
+                    <input type="number"
+                           class="set-width"
+                           name="categoryWidths"
+                           min="1"
+                           max="12"
+                           value="@category.Width" />
+                </div>
+                <br />
+            }
+        </div>
+
+        <div class="page-container">
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary submit-button" />
+            </div>
+        </div>
+    </form>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

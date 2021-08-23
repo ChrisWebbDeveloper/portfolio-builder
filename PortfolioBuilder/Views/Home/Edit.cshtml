@@ -1,0 +1,37 @@
+﻿@model PortfolioBuilder.ViewModels.HomeViewModel
+
+@{
+    ViewData["Title"] = "Edit - Home";
+}
+
+<form asp-action="Edit">
+    <div class="container py-3">
+        <partial name="_NavigationPartial" />
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
+
+        <div class="row">
+            <div class="col-12 col-lg-8 order-lg-last">
+                <h3>Carousel Photos</h3>
+                <partial name="Config Boxes/Photo/_PhotoConfigPartial" />
+            </div>
+            <div class="col-12 col-lg-4 order-lg-first">
+                <h3>Featured Portfolios</h3>
+                <partial name="Config Boxes/Featured Portfolio/_FeaturedPortfoliosConfigPartial" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

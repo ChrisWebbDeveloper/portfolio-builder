@@ -1,0 +1,43 @@
+﻿@model PortfolioBuilder.Models.Photo
+
+@{
+    ViewData["Title"] = Model.FilePath + " - Edit";
+}
+
+<div class="page-container">
+    <partial name="_NavigationPartial" />
+
+    <div class="row">
+        <div class="col-12 col-lg-8">
+            <img src="~/images/@Model.FilePath" alt="@Model.FilePath" title="@Model.Name" class="photo-display-lg" />
+        </div>
+        <div class="col-12 col-lg-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="FilePath" />
+
+                <div class="form-group">
+                    <input asp-for="Name" class="form-control form-control-lg" placeholder="Name" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <hr />
+
+                <div class="form-group">
+                    <textarea asp-for="Description" class="form-control" placeholder="Description" rows="10"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary submit-button" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

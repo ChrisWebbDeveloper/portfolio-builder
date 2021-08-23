@@ -1,0 +1,10 @@
+﻿.admin-header {
+    @extend .navbar-dark;
+    @extend .bg-dark;
+    background: $siteBlack;
+    border-bottom: $siteRed 2px solid;
+
+    .nav-link {
+        @extend .text-light;
+    }
+}

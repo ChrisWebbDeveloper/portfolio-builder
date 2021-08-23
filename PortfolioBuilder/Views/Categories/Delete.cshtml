@@ -1,0 +1,34 @@
+﻿@model PortfolioBuilder.Models.Category
+
+@{
+    ViewData["Title"] = Model.Name + " - Delete";
+}
+
+<div class="page-container">
+    <partial name="_NavigationPartial" />
+
+    <h1>@ViewData["Title"]</h1>
+
+    <h3>Are you sure you want to delete this? This cannot be undone</h3>
+    <hr />
+
+    <partial name="Item Display/_CategoryDetailsPartial" model="Model" />
+</div>
+
+<div class="cat-port-display row">
+    @foreach (var categoryPortfolio in Model.Portfolios.OrderBy(ph => ph.Position))
+    {
+        string catPortWidthClass = !String.IsNullOrEmpty(categoryPortfolio.Width.ToString()) ? "col-md-" + categoryPortfolio.Width.ToString() : "";
+
+        <div class="col-12 @catPortWidthClass">
+            <partial name="Item Display/_PortfolioDisplayBoxPartial" model="categoryPortfolio.Portfolio" />
+        </div>
+    }
+</div>
+
+<div class="page-container">
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger submit-button" />
+    </form>
+</div>

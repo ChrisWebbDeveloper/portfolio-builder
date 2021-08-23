@@ -1,0 +1,55 @@
+﻿@model PortfolioBuilder.Models.About
+
+@{
+    ViewData["Title"] = "About";
+}
+
+<div class="page-container">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <partial name="_NavigationPartial" />
+    }
+
+    @if (!String.IsNullOrEmpty(Model.Title))
+    {
+        <h1>@Model.Title</h1>
+        <br />
+    }
+
+    <div class="row">
+        @if (!String.IsNullOrEmpty(Model.Description) && Model.Photos.Count > 0)
+        {
+            <div class="col-12 mb-4 col-md-8 about-description">
+                <p class="multiline" id="about-text">@Model.Description</p>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="auto-scroller" id="about-imgs">
+                    @foreach (var aboutPhoto in Model.Photos)
+                    {
+                        <img src="~/images/@aboutPhoto.Photo.FilePath" alt="@aboutPhoto.Photo.FilePath" title="@aboutPhoto.Photo.Name" class="about-img" />
+                    }
+                </div>
+            </div>
+        }
+        else
+        {
+            if (!String.IsNullOrEmpty(Model.Description))
+            {
+                <div class="col-12">
+                    <p class="multiline" id="about-text">@Model.Description</p>
+                </div>
+            }
+
+            if (Model.Photos.Count > 0)
+            {
+                @foreach (var aboutPhoto in Model.Photos)
+                {
+                    <div class="col-12 col-md-4">
+                        <img src="~/images/@aboutPhoto.Photo.FilePath" alt="@aboutPhoto.Photo.FilePath" title="@aboutPhoto.Photo.Name" class="about-img" />
+                    </div>
+                }
+            }
+        }
+    </div>
+</div>

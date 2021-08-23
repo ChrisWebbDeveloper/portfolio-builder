@@ -1,0 +1,27 @@
+﻿@model PortfolioBuilder.Models.Portfolio
+
+@{
+    ViewData["Title"] = "Add Portfolio";
+}
+
+<form asp-action="Create">
+    <div class="page-container">
+        <partial name="_NavigationPartial" />
+
+        <partial name="Config Boxes/_PortfolioDetailsConfigPartial" />
+    </div>
+
+    <partial name="Config Boxes/Photo/_PhotoConfigPartial" />
+
+    <div class="page-container">
+        <partial name="Config Boxes/_PortfolioCustomHtmlConfigPartial" />
+
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary submit-button" />
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

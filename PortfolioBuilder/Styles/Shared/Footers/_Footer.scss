@@ -1,0 +1,37 @@
+﻿html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+footer {
+    @extend .text-muted;
+    flex-shrink: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: $footerHeight;
+    position: relative;
+
+    &.home-footer {
+        @extend .text-light;
+        @extend .px-3;
+
+        a {
+            @extend .link-animate-dark;
+        }
+    }
+
+    a {
+        @extend .py-3;
+        @extend .px-2;
+        @extend .link-animate-bottom;
+    }
+}

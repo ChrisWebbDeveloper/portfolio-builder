@@ -1,0 +1,25 @@
+﻿<div class="float-left">
+    &copy;
+    @if (DateTime.Now.Year == 2021) {
+        @:2021
+    } else {
+        @:2021-@DateTime.Now.Year
+    }
+    - Portfolio Builder
+</div>
+<div class="float-right">
+    <a href="http://www.chriswebbdeveloper.co.uk/" target="_blank" class="@ViewData["FooterLinkClass"]">Built by Chris Webb Developer</a>
+    <environment names="Development,Staging">
+        &nbsp;
+        <environment names="Development"><strong>DEVELOPMENT</strong> </environment>
+        <environment names="Staging"><strong>STAGING</strong></environment>
+        &nbsp; @ViewData["VersionNo"]
+    </environment>
+    <environment names="Production">
+        @if (User.Identity.IsAuthenticated)
+        {
+            @:&nbsp; @ViewData["VersionNo"]
+        }
+    </environment>
+</div>
+<div class="clearfix"></div>
