@@ -75,7 +75,7 @@ You will need the following in order to build this project:
 1. Open the PortfolioBuilder.sln file in Visual Studio
 2. In the project's terminal move into the ProjectBuilder folder
    ```sh
-   cd PortfolioBuilder\
+   cd .\PortfolioBuilder
    ```
 3. Install NPM packages
    ```sh
