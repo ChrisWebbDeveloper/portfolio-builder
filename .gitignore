@@ -344,3 +344,5 @@ healthchecksdb
 /PortfolioBuilder/wwwroot/css
 /PortfolioBuilder/wwwroot/js
 /PortfolioBuilder/wwwroot/lib
+
+*/package-lock.json
